@@ -3,20 +3,28 @@ echo "== put-object"
 
 # Check for bucket name
 if [ -z "$1" ]; then
-    echo "There needs to be a bucket name eg. ./bucket my-bucket-name"
+    echo "There needs to be a bucket name eg. ./script.sh my-bucket-name"
     exit 1
 fi
 
+# Check for filename
 if [ -z "$2" ]; then
-    echo "There needs to be a filename eg. ./bucket my-bucket-name filename"
+    echo "There needs to be a filename eg. ./script.sh my-bucket-name my-filename.txt"
     exit 1
 fi
+
 BUCKET_NAME=$1
 FILENAME=$2
 
-OBJECT_KEY=$(basename "$FILENAME")
+# Create a temporary file
+TEMP_FILE="/tmp/$FILENAME"
+echo "This is a sample file content." > "$TEMP_FILE"
 
+# Put the object to S3 bucket
 aws s3api put-object \
---bucket $BUCKET_NAME \
---body $FILENAME \
---key $OBJECT_KEY
+--bucket "$BUCKET_NAME" \
+--key "$FILENAME" \
+--body "$TEMP_FILE"
+
+# Optionally, you can delete the temporary file
+rm "$TEMP_FILE"
