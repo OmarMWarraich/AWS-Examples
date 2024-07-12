@@ -1,4 +1,9 @@
 tasks:
+  - name: pulumi
+    before: |
+      curl -fsSL https://get.pulumi.com | sh
+      echo 'export PATH=$PATH:/home/gitpod/.pulumi/bin' >> /home/gitpod/.bashrc
+      export PATH=$PATH:/home/gitpod/.pulumi/bin
   - name: cdk
     before: |
       npm i -g aws-cdk

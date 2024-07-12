@@ -1,0 +1,11 @@
+name: pulumi-simple-s3-storage
+runtime:
+  name: python
+  options:
+    toolchain: pip
+    virtualenv: venv
+description: A minimal AWS Python S3 Bucket Creating program
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: aws-python
