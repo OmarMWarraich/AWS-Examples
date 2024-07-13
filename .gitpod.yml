@@ -1,12 +1,4 @@
 tasks:
-  - name: dependencies
-    before: |
-      ./bin/terraform_cli_install.sh
-
-  # random utils
-  - name: utils
-    before: |
-      sudo apt-get install tree
   - name: aws-cli
     env:
       AWS_CLI_AUTO_PROMPT: on-partial
@@ -16,3 +8,4 @@ tasks:
       unzip awscliv2.zip
       sudo ./aws/install
       cd $THEIA_WORKSPACE_ROOT
+      ./bin/terraform_cli_install.sh
