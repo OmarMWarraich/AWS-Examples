@@ -51,3 +51,14 @@ aws s3 cp hello.txt s3://encryption-fun-om-134/hello.txt \
 
 aws s3 cp s3://encryption-fun-om-134/hello.txt hello.txt --sse-c AES256 --sse-c-key fileb://ssec.key
 ```
+
+## Empty bucket
+
+```sh
+aws s3 rm s3://encryption-fun-om-134 --recursive
+```
+
+## Remove bucket
+```sh
+aws s3 rb s3://encryption-fun-om-134
+```
